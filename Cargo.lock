@@ -4488,7 +4488,7 @@ dependencies = [
  "httpdate",
  "itoa",
  "pin-project-lite",
- "socket2 0.5.7",
+ "socket2 0.4.10",
  "tokio",
  "tower-service",
  "tracing 0.1.40",
@@ -6610,7 +6610,7 @@ dependencies = [
  "ordered-float 4.5.0",
  "prost 0.12.6",
  "prost-build 0.12.6",
- "tonic 0.11.0",
+ "tonic 0.12.3",
  "tonic-build 0.11.0",
  "vector-core",
  "vector-lookup",
@@ -7432,7 +7432,7 @@ checksum = "22505a5c94da8e3b7c2996394d1c933236c4d743e81a410bcca4e6989fc066a4"
 dependencies = [
  "bytes 1.8.0",
  "heck 0.5.0",
- "itertools 0.12.1",
+ "itertools 0.10.5",
  "log",
  "multimap",
  "once_cell",
@@ -7465,7 +7465,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "81bddcdb20abf9501610992b6759a4c888aef7d1a7247ef75e2404275ac24af1"
 dependencies = [
  "anyhow",
- "itertools 0.12.1",
+ "itertools 0.10.5",
  "proc-macro2 1.0.89",
  "quote 1.0.37",
  "syn 2.0.87",
@@ -8453,6 +8453,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustls"
+version = "0.23.25"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "822ee9188ac4ec04a2f0531e55d035fb2de73f18b41a63c70c2712503b6fb13c"
+dependencies = [
+ "log",
+ "once_cell",
+ "ring 0.17.5",
+ "rustls-pki-types",
+ "rustls-webpki 0.103.1",
+ "subtle",
+ "zeroize",
+]
+
+[[package]]
 name = "rustls-native-certs"
 version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -8469,6 +8484,19 @@ name = "rustls-native-certs"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1fb85efa936c42c6d5fc28d2629bb51e4b2f4b8a5211e297d599cc5a093792"
+dependencies = [
+ "openssl-probe",
+ "rustls-pemfile 2.1.0",
+ "rustls-pki-types",
+ "schannel",
+ "security-framework",
+]
+
+[[package]]
+name = "rustls-native-certs"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fcaf18a4f2be7326cd874a5fa579fae794320a0f388d365dca7e480e55f83f8a"
 dependencies = [
  "openssl-probe",
  "rustls-pemfile 2.1.0",
@@ -8507,9 +8535,9 @@ dependencies = [
 
 [[package]]
 name = "rustls-pki-types"
-version = "1.3.1"
+version = "1.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5ede67b28608b4c60685c7d54122d4400d90f62b40caee7700e700380a390fa8"
+checksum = "917ce264624a4b4db1c364dcc35bfca9ded014d0a958cd47ad3e960e988ea51c"
 
 [[package]]
 name = "rustls-webpki"
@@ -8526,6 +8554,17 @@ name = "rustls-webpki"
 version = "0.102.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "faaa0a62740bedb9b2ef5afa303da42764c012f743917351dc9a237ea1663610"
+dependencies = [
+ "ring 0.17.5",
+ "rustls-pki-types",
+ "untrusted 0.9.0",
+]
+
+[[package]]
+name = "rustls-webpki"
+version = "0.103.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fef8b8769aaccf73098557a87cd1816b4f9c7c16811c9c77142aa695c16f2c03"
 dependencies = [
  "ring 0.17.5",
  "rustls-pki-types",
@@ -9886,6 +9925,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tokio-rustls"
+version = "0.26.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e727b36a1a0e8b74c376ac2211e40c2c8af09fb4013c60d910495810f008e9b"
+dependencies = [
+ "rustls 0.23.25",
+ "tokio",
+]
+
+[[package]]
 name = "tokio-stream"
 version = "0.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10049,6 +10098,7 @@ dependencies = [
  "axum 0.7.5",
  "base64 0.22.1",
  "bytes 1.8.0",
+ "flate2",
  "h2 0.4.6",
  "http 1.1.0",
  "http-body 1.0.0",
@@ -10059,8 +10109,11 @@ dependencies = [
  "percent-encoding",
  "pin-project",
  "prost 0.13.3",
+ "rustls-native-certs 0.8.0",
+ "rustls-pemfile 2.1.0",
  "socket2 0.5.7",
  "tokio",
+ "tokio-rustls 0.26.2",
  "tokio-stream",
  "tower",
  "tower-layer",
@@ -10930,7 +10983,7 @@ dependencies = [
  "tokio-tungstenite 0.20.1",
  "tokio-util",
  "toml",
- "tonic 0.11.0",
+ "tonic 0.12.3",
  "tonic-build 0.11.0",
  "tower",
  "tower-http",
@@ -11172,7 +11225,7 @@ dependencies = [
  "tokio-test",
  "tokio-util",
  "toml",
- "tonic 0.11.0",
+ "tonic 0.12.3",
  "tracing 0.1.40",
  "tracing-core 0.1.32",
  "tracing-subscriber",
