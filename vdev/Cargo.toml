@@ -11,8 +11,8 @@ publish = false
 anyhow = "1.0.93"
 chrono.workspace = true
 clap.workspace = true
-clap-verbosity-flag = "2.2.3"
-clap_complete = "4.5.38"
+clap-verbosity-flag = "3.0.4"
+clap_complete = "4.5.58"
 confy = "0.6.1"
 directories = "5.0.1"
 # remove this when stabilized https://doc.rust-lang.org/stable/std/path/fn.absolute.html
